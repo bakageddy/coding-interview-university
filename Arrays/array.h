@@ -11,7 +11,10 @@ typedef struct {
 } array_t;
 
 typedef enum {
-	NONE
+	NONE,
+	EMPTY,
+	NOT_FOUND,
+	OUT_OF_MEMORY
 } err_t;
 
 typedef struct pop_result_t {
@@ -34,7 +37,7 @@ int array_get(array_t *, uint64_t);
 err_t array_push(array_t *, int);
 err_t array_insert(array_t *, uint64_t, int);
 err_t array_prepend(array_t *, int);
-int array_pop(array_t *);
+pop_result_t array_pop(array_t *);
 int array_delete(array_t *, uint64_t);
 void array_remove_left(array_t *, int);
 void array_remove_right(array_t *, int);
@@ -42,6 +45,6 @@ void array_remove_all(array_t *, int);
 find_result_t array_find(array_t *, int);
 err_t array_resize(array_t *);
 
-void *deinit_array(array_t *);
+void deinit_array(array_t *);
 
 #endif // BAKAGEDDY_ARRAY_H
