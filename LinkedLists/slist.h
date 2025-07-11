@@ -1,7 +1,7 @@
 #ifndef BAKAGEDDY_LIST_H
 #define BAKAGEDDY_LIST_H
 
-#include <cstdint>
+#include <stdbool.h>
 #include <stdint.h>
 
 typedef struct slist_node_t {
@@ -9,13 +9,14 @@ typedef struct slist_node_t {
 	slist_node_t *next;
 } slist_node_t;
 
-typedef struct {
+typedef struct slist_t {
 	slist_node_t *head;
 	slist_node_t *tail;
 } slist_t;
 
 typedef enum {
 	NONE,
+	OUT_OF_BOUNDS
 } err_t;
 
 typedef struct {
@@ -55,7 +56,7 @@ err_t slist_insert_node(slist_t, uint64_t, slist_node_t *);
 
 int slist_delete(slist_t *, uint64_t);
 int slist_remove(slist_t *, int);
-int slist_remove(slist_t *, slist_node_t *);
+int slist_remove_node(slist_t *, slist_node_t *);
 
 int slist_reverse(slist_t *);
 
